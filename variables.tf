@@ -55,6 +55,15 @@ variable "cidr_whitelist" {
 }
 
 variable "enclave_enabled" {
-  type = bool
+  type    = bool
   default = true
+}
+
+variable "linux_distribution" {
+  type    = string
+  default = "amzn2"
+  validation {
+    condition     = can(regex("^amzn2|ubuntu$", var.linux_distribution))
+    error_message = "Must be one of `amzn2`, `ubuntu`."
+  }
 }

@@ -1,6 +1,17 @@
+module "ubuntu_20_04_latest" {
+  source  = "andreswebs/ami-ubuntu/aws"
+  version = "1.1.0"
+}
+
+module "amzn2_latest" {
+  source  = "andreswebs/ami-amzn2/aws"
+  version = "1.0.0"
+}
+
 locals {
-  ssh_key_name = var.ssh_key_name != "" ? var.ssh_key_name : "${var.name}-ssh"
-  ami_id       = var.ami_id != "" ? var.ami_id : module.ubuntu_20_04_latest.ami.image_id
+  ssh_key_name   = var.ssh_key_name != "" ? var.ssh_key_name : "${var.name}-ssh"
+  default_ami_id = var.linux_distribution != "ubuntu" ? module.amzn2_latest.ami_id : module.ubuntu_20_04_latest.ami_id
+  ami_id         = var.ami_id != "" ? var.ami_id : local.default_ami_id
 }
 
 resource "aws_security_group" "this" {
@@ -28,21 +39,16 @@ resource "aws_security_group" "this" {
   }
 }
 
-module "ubuntu_20_04_latest" {
-  source  = "andreswebs/ami-ubuntu/aws"
-  version = "1.0.0"
-}
-
 module "ec2_keypair" {
-  source  = "andreswebs/insecure-ec2-key-pair/aws"
-  version = "1.0.0"
+  source             = "andreswebs/insecure-ec2-key-pair/aws"
+  version            = "1.0.0"
   key_name           = local.ssh_key_name
   ssm_parameter_name = "/${var.name}/ssh-key"
 }
 
 module "ec2_role" {
-  source  = "andreswebs/ec2-role/aws"
-  version = "1.0.0"
+  source       = "andreswebs/ec2-role/aws"
+  version      = "1.0.0"
   role_name    = var.name
   profile_name = var.name
   policies = [
