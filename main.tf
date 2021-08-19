@@ -64,7 +64,7 @@ module "s3_requisites_for_ssm" {
 
 resource "aws_iam_role_policy" "s3_requisites_for_ssm" {
   name   = "s3-requisites-for-ssm"
-  role   = module.ec2_role.role.arn
+  role   = module.ec2_role.role.name
   policy = module.s3_requisites_for_ssm.json
 }
 
