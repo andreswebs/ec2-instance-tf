@@ -90,4 +90,9 @@ resource "aws_instance" "this" {
   tags = {
     Name = var.name
   }
+
+  lifecycle {
+    ignore_changes = [ "ami", "tags" ]
+  }
+
 }
