@@ -92,7 +92,7 @@ resource "aws_instance" "this" {
   }
 
   lifecycle {
-    ignore_changes = [ "ami", "tags" ]
+    ignore_changes = [ ami, tags ]
   }
 
 }
