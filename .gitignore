@@ -24,3 +24,5 @@ config.yaml
 !**/terragrunt.hcl.example
 
 .envrc
+
+*.pem
