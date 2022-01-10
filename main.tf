@@ -97,3 +97,7 @@ resource "aws_instance" "this" {
   }
 
 }
+
+data "aws_instance" "this" {
+  instance_id = aws_instance.this.id
+}
