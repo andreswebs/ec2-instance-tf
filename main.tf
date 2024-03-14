@@ -1,18 +1,19 @@
 module "ec2_base" {
   # source = "github.com/andreswebs/terraform-aws-ec2-base"
   source         = "andreswebs/ec2-base/aws"
-  version        = "0.0.1"
+  version        = "0.1.0"
   vpc_id         = var.vpc_id
   cidr_whitelist = var.cidr_whitelist
   name           = var.name
 
-  extra_ingress_rules = [
-    {
-      ip_protocol = "udp"
-      from_port   = "41641"
-      to_port     = "41641"
-    }
-  ]
+  # extra_ingress_rules = [
+  #   {
+  #     ip_protocol = "udp"
+  #     from_port   = "41641"
+  #     to_port     = "41641"
+  #     cidr_ipv4   = "0.0.0.0/0"
+  #   }
+  # ]
 
 }
 
