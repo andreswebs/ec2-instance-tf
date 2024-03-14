@@ -1,8 +1,5 @@
-live/terragrunt.hcl
-.terragrunt-cache
-
 backend.tf
-provider.tf
+providers.tf
 terraform.tf
 
 .terraform
@@ -26,3 +23,4 @@ config.yaml
 .envrc
 
 *.pem
+.DS_Store
