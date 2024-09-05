@@ -1,4 +1,4 @@
-# ec2-instance
+# aws-ec2-instance-linux-tf
 
 ## Authors
 
