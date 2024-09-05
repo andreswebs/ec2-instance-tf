@@ -8,3 +8,12 @@ resource "aws_iam_role_policy_attachment" "efs" {
   role       = module.ec2_standalone.instance.instance_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonElasticFileSystemsUtils"
 }
+
+resource "aws_ssm_association" "efs_utils" {
+  name = "AmazonEFSUtils"
+
+  targets {
+    key    = "InstanceIds"
+    values = [module.ec2_standalone.instance.id]
+  }
+}
