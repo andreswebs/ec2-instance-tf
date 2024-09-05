@@ -9,3 +9,7 @@ output "public_ip" {
 output "security_group_id" {
   value = module.ec2_standalone.instance.security_group.id
 }
+
+output "role_arn" {
+  value = module.ec2_standalone.instance.instance_role.arn
+}
