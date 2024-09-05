@@ -4,7 +4,7 @@ module "ec2_standalone" {
   subnet_id = var.subnet_id
 }
 
-# resource "aws_iam_role_policy_attachment" "efs" {
-#   role       = module.ec2_standalone.instance_role.arn
-#   policy_arn = "arn:aws:iam::aws:policy/AmazonElasticFileSystemsUtils"
-# }
+resource "aws_iam_role_policy_attachment" "efs" {
+  role       = module.ec2_standalone.instance.instance_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonElasticFileSystemsUtils"
+}
