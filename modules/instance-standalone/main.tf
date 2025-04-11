@@ -24,6 +24,7 @@ module "ec2_instance" {
   version                = "0.10.0"
   name                   = var.name
   instance_type          = var.instance_type
+  ami_id                 = var.ami_id
   subnet_id              = data.aws_subnet.this.id
   iam_profile_name       = module.ec2_base.instance_profile.name
   vpc_security_group_ids = [module.ec2_base.security_group.id]

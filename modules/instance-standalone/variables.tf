@@ -15,3 +15,8 @@ variable "cidr_whitelist_ipv4" {
   type    = list(string)
   default = []
 }
+
+variable "ami_id" {
+  type    = string
+  default = null
+}

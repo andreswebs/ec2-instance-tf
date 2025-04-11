@@ -8,5 +8,10 @@ variable "subnet_id" {
 
 variable "instance_type" {
   type    = string
-  default = "m7a.large"
+  default = "g6e.xlarge"
+}
+
+variable "ami_id" {
+  type    = string
+  default = null
 }
