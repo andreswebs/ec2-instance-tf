@@ -30,5 +30,4 @@ module "ec2_instance" {
   vpc_security_group_ids = [module.ec2_base.security_group.id]
 
   app_username = var.name
-
 }
